@@ -7,9 +7,10 @@ from settings import settings
 # -------------------------------
 # Load Configuration
 # -------------------------------
-QDRANT_URL = settings.QDRANT_URL
-QDRANT_API_KEY = settings.QDRANT_API_KEY
-GROQ_API_KEYS = [settings.GROQ_KEY]  # Using multiple API keys
+QDRANT_URL="https://64c9b924-a747-4c21-874f-f6901dc0431e.us-east-1-0.aws.cloud.qdrant.io:6333"
+QDRANT_API_KEY="vgywMs0OrU6zw1BkgnJ6sQ8CAbp2XJ7spYIgQFoRaEjAqCAXLlp3Rg"
+
+GROQ_API_KEYS ="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" # Using multiple API keys
 GROQ_MODEL = "llama-3.3-70b-versatile"
 
 groq_client = Groq(api_key=GROQ_API_KEYS[0])
