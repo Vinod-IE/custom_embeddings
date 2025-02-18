@@ -19,7 +19,7 @@ fastembed
 azure-storage-blob==12.24.0
 spacy
 nltk
-#pip install openpyxl
+openpyxl
 
 
 # pip install --quiet -U langchain langchain_openai langgraph langchainhub langchain_experimental langchain_community
