@@ -32,7 +32,6 @@ model_st = SentenceTransformer('all-MiniLM-L6-v2')
 # -------------------------------
 # Collection Details
 # -------------------------------
-
 collections = {
     "1.names_withsynonyms_withweights_sparsematrices": "https://raw.githubusercontent.com/Vinod-IE/custom_embeddings/main/data/1.names_withsynonyms_withweights_sparsematrices.xlsx",
     "2.names_withsynonyms_withoutweights_sparsematrices": "https://raw.githubusercontent.com/Vinod-IE/custom_embeddings/main/data/2.names_withsynonyms_withoutweights_sparsematrices.xlsx",
@@ -46,8 +45,7 @@ collections = {
     "10.names_withsynonyms_withweights_withoutvecotrs_withSentenceTransformers":"https://raw.githubusercontent.com/Vinod-IE/custom_embeddings/main/data/10.names_withsynonyms_withweights_withoutvecotrs_withSentenceTransformers.xlsx",
     "11.names_withsynonyms_withoutweights_withoutvectors_withSentenceTransformers":"https://raw.githubusercontent.com/Vinod-IE/custom_embeddings/main/data/11.names_withsynonyms_withoutweights_withoutvectors_withSentenceTransformers.xlsx",
     "12.names_withoutsynonyms_withoutvectors_withSentenceTransformers":"https://raw.githubusercontent.com/Vinod-IE/custom_embeddings/main/data/12.names_withoutsynonyms_withoutvectors_withSentenceTransformers.xlsx"
-      
- }
+}
 
 # collections = {
 #     "1.names_withsynonyms_withweights_sparsematrices": os.path.join("data", "1.names_withsynonyms_withweights_sparsematrices.xlsx"),
@@ -127,10 +125,6 @@ with tabs[0]:
 with tabs[1]:
     st.header("Query and Chat")
     query = st.text_input("Enter your query:")
-    
-    # Temperature slider for the LLM response (lower values for more direct answers)
-    # temperature = st.slider("LLM Temperature", min_value=0.0, max_value=1.0, value=0.0, step=0.1,
-    #                         help="Lower temperature produces more direct and correct details.")
 
     # -------------------------------
     # Helper Functions
@@ -190,7 +184,6 @@ with tabs[1]:
     def get_llm_response(query, contexts):
         """
         Generate response using the LLM model with instructions to provide correct and direct details.
-        The temperature parameter controls the randomness.
         """
         prompt = f"User Query: {query}\nContext: {contexts}\nPlease provide a correct, direct, and detailed answer. Answer:"
         try:
@@ -249,7 +242,7 @@ with tabs[1]:
                         st.warning("No matching results found.")
 
                 # Get response from the LLM model
-                llm_response = get_llm_response(query, context, temperature)
+                llm_response = get_llm_response(query, context)
                 st.subheader("Chat Response")
                 st.success(llm_response)
 
