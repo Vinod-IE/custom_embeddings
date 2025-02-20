@@ -2,10 +2,15 @@ import pandas as pd
 import json
 from qdrant_client import QdrantClient
 from qdrant_client.models import VectorParams, Distance, PointStruct
-from settings import settings
+
+
+QDRANT_URL="https://64c9b924-a747-4c21-874f-f6901dc0431e.us-east-1-0.aws.cloud.qdrant.io:6333"
+QDRANT_API_KEY="vgywMs0OrU6zw1BkgnJ6sQ8CAbp2XJ7spYIgQFoRaEjAqCAXLlp3Rg"
+GROQ_KEY="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" # Using multiple API keys
+GROQ_MODEL = "llama-3.3-70b-versatile"
 
 # Load Excel data
-file_path = r"data\4.names_withsynonyms_withweights_zerovectors.xlsx"
+file_path = r"data\8.names_withsynonyms_withoutweights_withbasevectors.xlsx"
 df = pd.read_excel(file_path)
 
 # Convert column names to lowercase and remove spaces
@@ -21,8 +26,8 @@ if missing_columns:
     raise KeyError(f"Missing columns in Excel: {missing_columns}")
 
 # Initialize Qdrant Client
-client = QdrantClient(url=settings.QDRANT_URL, api_key=settings.QDRANT_API_KEY)
-collection_name = "4.names_withsynonyms_withweights_zerovectors"
+client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
+collection_name = "8.names_withsynonyms_withoutweights_withbasevectors"
 
 # Prepare Points for Qdrant
 points = []
