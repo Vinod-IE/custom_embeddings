@@ -198,7 +198,7 @@ with tabs[1]:
                 model=GROQ_MODEL,
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=200,
-                temperature=temperature
+                temperature=0.5
             )
             return response.choices[0].message.content.strip() if response.choices else "No response generated."
         except Exception as e:
