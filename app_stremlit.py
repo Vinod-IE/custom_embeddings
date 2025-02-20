@@ -187,7 +187,7 @@ with tabs[1]:
         except Exception as e:
             return []
 
-    def get_llm_response(query, contexts, temperature):
+    def get_llm_response(query, contexts):
         """
         Generate response using the LLM model with instructions to provide correct and direct details.
         The temperature parameter controls the randomness.
@@ -197,8 +197,7 @@ with tabs[1]:
             response = groq_client.chat.completions.create(
                 model=GROQ_MODEL,
                 messages=[{"role": "user", "content": prompt}],
-                max_tokens=200,
-                temperature=0.5
+                max_tokens=200
             )
             return response.choices[0].message.content.strip() if response.choices else "No response generated."
         except Exception as e:
